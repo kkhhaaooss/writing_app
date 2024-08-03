@@ -19,7 +19,7 @@ class TurnTimer extends StatelessWidget {
   Widget build(BuildContext context) {
     return Consumer<TimerProvider>(
       builder: (context, timerProvider, child) {
-        if (timerProvider.isPaused) {
+        if (timerProvider.paused) {
           controller.pause();
         } else {
           controller.resume();
@@ -32,6 +32,7 @@ class TurnTimer extends StatelessWidget {
           height: height,
           fillColor: Colors.grey,
           ringColor: Colors.black,
+          autoStart: false,
         );
       },
     );

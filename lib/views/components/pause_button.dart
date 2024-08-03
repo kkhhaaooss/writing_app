@@ -13,8 +13,7 @@ class PauseButton extends StatelessWidget {
           onPressed: () {
             timerProvider.togglePause();
           },
-          child:
-              Text(timerProvider.isPaused ? 'Resume Writing' : 'Pause Writing'),
+          child: Text(timerProvider.paused ? 'Write!' : 'Pause Writing'),
         );
       },
     );
