@@ -13,6 +13,13 @@ class PauseButton extends StatelessWidget {
         return ElevatedButton(
           focusNode: btnFocusNode,
           autofocus: true,
+          style: ElevatedButton.styleFrom(
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(10),
+            ),
+            padding: const EdgeInsets.all(20),
+            backgroundColor: const Color.fromARGB(255, 146, 190, 212),
+          ),
           onPressed: () {
             btnFocusNode.unfocus();
             timerProvider.togglePause();
