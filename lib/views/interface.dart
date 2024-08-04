@@ -35,15 +35,17 @@ class Interface extends StatelessWidget {
                 children: [
                   TurnTimer(
                     controller: timerController,
-                    height: screenHeight * 0.25,
-                    width: screenWidth * 0.25,
+                    height: screenHeight * 0.2,
+                    width: screenWidth * 0.2,
                   ),
                   const SizedBox(height: 40),
-                  const PauseButton(),
-                  const SizedBox(height: 40),
-                  const LastParagraph(),
+                  LastParagraph(
+                    height: screenHeight * 0.2,
+                  ),
                   const SizedBox(height: 40),
                   const TextInput(),
+                  const SizedBox(height: 40),
+                  const PauseButton(),
                 ],
               ),
             ),

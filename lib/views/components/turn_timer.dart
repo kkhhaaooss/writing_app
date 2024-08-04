@@ -19,6 +19,10 @@ class TurnTimer extends StatelessWidget {
   Widget build(BuildContext context) {
     return Consumer<TimerProvider>(
       builder: (context, timerProvider, child) {
+        if (!controller.isStarted.value) {
+          controller.start();
+        }
+        ;
         if (timerProvider.paused) {
           controller.pause();
         } else {
@@ -28,11 +32,22 @@ class TurnTimer extends StatelessWidget {
           duration: 10 * 60,
           initialDuration: 0,
           controller: controller,
-          width: width,
-          height: height,
+          width: width / 2,
+          height: height / 2,
           fillColor: Colors.grey,
+          strokeWidth: width * .75,
           ringColor: Colors.black,
           autoStart: false,
+          isReverse: true,
+          strokeCap: StrokeCap.butt,
+          textStyle: const TextStyle(
+            fontSize: 23.0,
+            color: Colors.blue,
+            fontWeight: FontWeight.bold,
+            backgroundColor: Colors.white,
+          ),
+          textAlign: TextAlign.center,
+          textFormat: CountdownTextFormat.MM_SS,
         );
       },
     );

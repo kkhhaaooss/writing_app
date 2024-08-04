@@ -4,13 +4,18 @@ import 'package:provider/provider.dart';
 import 'package:writing_app/providers/text_provider.dart';
 
 class LastParagraph extends StatelessWidget {
-  const LastParagraph({super.key});
+  const LastParagraph({
+    super.key,
+    required this.height,
+  });
+  final double height;
 
   @override
   Widget build(BuildContext context) {
     return Consumer<TextProvider>(
       builder: (context, textProvider, child) {
         return Container(
+          height: height,
           padding: const EdgeInsets.all(8.0),
           decoration: BoxDecoration(
               color: const Color.fromARGB(255, 146, 190, 212),
