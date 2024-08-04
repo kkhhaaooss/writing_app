@@ -7,7 +7,7 @@ class WritingApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    SharedPrefs().userName = 'russell';
+    // SharedPrefs().userName = 'Russell';
     return Interface();
   }
 }

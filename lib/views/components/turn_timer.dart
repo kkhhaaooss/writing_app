@@ -2,6 +2,7 @@ import 'package:circular_countdown_timer/circular_countdown_timer.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:writing_app/providers/timer_provider.dart';
+import 'package:writing_app/utils/shared_prefs.dart';
 
 class TurnTimer extends StatelessWidget {
   final CountDownController controller;
@@ -29,7 +30,7 @@ class TurnTimer extends StatelessWidget {
           controller.resume();
         }
         return CircularCountDownTimer(
-          duration: 10 * 60,
+          duration: SharedPrefs().turnLength * 60,
           initialDuration: 0,
           controller: controller,
           width: timerProvider.paused ? width / 2 : width / 4,

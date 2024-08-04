@@ -12,11 +12,21 @@ class SharedPrefs {
     _sharedPrefs = await SharedPreferences.getInstance();
   }
 
-  String get userName => _sharedPrefs.getString(keyUsername) ?? '';
+  // getters for shared prefs
+  String get userName => _sharedPrefs.getString(keyUsername) ?? 'User';
+
+  int get turnLength => _sharedPrefs.getInt(keyTurnLength) ?? 10;
+
+  // setters for shared prefs
   set userName(String value) {
     _sharedPrefs.setString(keyUsername, value);
   }
+
+  set turnLength(int value) {
+    _sharedPrefs.setInt(keyTurnLength, value);
+  }
 }
 
-// final sharedPrefs = SharedPrefs();
+// keys for shared prefs
 const String keyUsername = 'key_username';
+const String keyTurnLength = 'key_turn_length';
