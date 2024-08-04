@@ -4,9 +4,7 @@ class SharedPrefs {
   late final SharedPreferences _sharedPrefs;
   static final SharedPrefs _instance = SharedPrefs._internal();
 
-  factory SharedPrefs() {
-    return _instance;
-  }
+  factory SharedPrefs() => _instance;
 
   SharedPrefs._internal();
 
@@ -14,9 +12,9 @@ class SharedPrefs {
     _sharedPrefs = await SharedPreferences.getInstance();
   }
 
-  String get userName => _sharedPrefs.getString('keyUsername') ?? '';
+  String get userName => _sharedPrefs.getString(keyUsername) ?? '';
   set userName(String value) {
-    _sharedPrefs.setString('keyUsername', value);
+    _sharedPrefs.setString(keyUsername, value);
   }
 }
 

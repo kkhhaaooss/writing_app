@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:writing_app/providers/text_provider.dart';
 import 'package:writing_app/providers/timer_provider.dart';
+import 'package:writing_app/utils/shared_prefs.dart';
 import 'package:writing_app/views/components/last_paragraph.dart';
 import 'package:writing_app/views/components/pause_button.dart';
 import 'package:writing_app/views/components/text_input.dart';
@@ -26,7 +27,7 @@ class Interface extends StatelessWidget {
       child: MaterialApp(
         home: Scaffold(
           appBar: AppBar(
-            title: const Text('Writing App'),
+            title: Text('Writing App for ${SharedPrefs().userName}'),
             centerTitle: true,
             actions: [],
           ),
