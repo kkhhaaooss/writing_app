@@ -3,7 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 
 import 'package:provider/provider.dart';
 import 'package:writing_app/providers/text_provider.dart';
-import 'package:writing_app/providers/timer_provider.dart';
+// import 'package:writing_app/providers/timer_provider.dart';
 
 class TextInput extends StatefulWidget {
   const TextInput({super.key});

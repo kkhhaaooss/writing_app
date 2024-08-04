@@ -13,14 +13,14 @@ class LastParagraph extends StatelessWidget {
         return Container(
           padding: const EdgeInsets.all(8.0),
           decoration: BoxDecoration(
-              color: Colors.blueGrey,
+              color: const Color.fromARGB(255, 146, 190, 212),
               border: Border.all(
                   width: 3, color: Colors.black, style: BorderStyle.solid)),
           child: Text(
             textProvider.text,
             style: TextStyle(
               fontFamily: GoogleFonts.merriweather().fontFamily,
-              color: Colors.white,
+              color: const Color.fromARGB(255, 58, 27, 27),
             ),
             maxLines: 5,
             overflow: TextOverflow.ellipsis,
