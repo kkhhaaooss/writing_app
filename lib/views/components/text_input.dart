@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import 'package:provider/provider.dart';
 import 'package:writing_app/providers/text_provider.dart';
@@ -28,17 +29,36 @@ class _TextInputState extends State<TextInput> {
     }
   }
 
+  int _countWords({required String text}) {
+    final trimmedText = text.trim();
+    if (trimmedText.isEmpty) {
+      return 0;
+    } else {
+      return trimmedText.split(RegExp("\\s+")).length;
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Consumer2<TextProvider, TimerProvider>(
-      builder: (context, textProvider, timerProvider, child) {
+    return Consumer<TextProvider>(
+      builder: (context, textProvider, child) {
         return TextField(
           focusNode: focusNode,
+          canRequestFocus: true,
+          maxLines: 5,
+          minLines: 5,
+          onTap: () => focusNode.requestFocus(),
           controller: _textController,
-          onChanged: (newText) {
-            _updateDisplay(newText);
-            // timerProvider.togglePause();
-          },
+          onChanged: (text) => _updateDisplay(text),
+          // onSubmitted: (text) => _updateDisplay(text),
+          style: GoogleFonts.merriweather(),
+          decoration: InputDecoration(
+            counterText: '${_countWords(text: _textController.text)} words',
+            labelText: 'Write Here',
+            alignLabelWithHint: true,
+            hintText: 'Write something...',
+            border: const OutlineInputBorder(),
+          ),
         );
       },
     );
