@@ -22,7 +22,7 @@ class TurnTimer extends StatelessWidget {
         if (!controller.isStarted.value) {
           controller.start();
         }
-        ;
+
         if (timerProvider.paused) {
           controller.pause();
         } else {
@@ -44,7 +44,7 @@ class TurnTimer extends StatelessWidget {
             fontSize: 23.0,
             color: Colors.blue,
             fontWeight: FontWeight.bold,
-            backgroundColor: Colors.white,
+            backgroundColor: Colors.black,
           ),
           textAlign: TextAlign.center,
           textFormat: CountdownTextFormat.MM_SS,

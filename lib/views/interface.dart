@@ -43,7 +43,9 @@ class Interface extends StatelessWidget {
                     height: screenHeight * 0.2,
                   ),
                   const SizedBox(height: 40),
-                  const TextInput(),
+                  TextInput(
+                    timerController: timerController,
+                  ),
                   const SizedBox(height: 40),
                   const PauseButton(),
                 ],

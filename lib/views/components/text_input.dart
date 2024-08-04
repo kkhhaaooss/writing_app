@@ -1,3 +1,4 @@
+import 'package:circular_countdown_timer/circular_countdown_timer.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -6,8 +7,11 @@ import 'package:writing_app/providers/text_provider.dart';
 import 'package:writing_app/providers/timer_provider.dart';
 
 class TextInput extends StatefulWidget {
-  const TextInput({super.key});
-
+  const TextInput({
+    super.key,
+    required this.timerController,
+  });
+  final CountDownController timerController;
   @override
   State<TextInput> createState() => _TextInputState();
 }
@@ -42,6 +46,11 @@ class _TextInputState extends State<TextInput> {
   Widget build(BuildContext context) {
     return Consumer2<TextProvider, TimerProvider>(
       builder: (context, textProvider, timerProvder, child) {
+        // if (timerProvider.paused) {
+        //   _textController.enabled = false;
+        // } else {
+        //   controller.resume();
+        // }
         return TextField(
           focusNode: focusNode,
           canRequestFocus: true,
@@ -49,6 +58,7 @@ class _TextInputState extends State<TextInput> {
           minLines: 5,
           onTap: () => focusNode.requestFocus(),
           controller: _textController,
+          enabled: true,
           onChanged: (text) => _updateDisplay(text),
           // onSubmitted: (text) => _updateDisplay(text),
           style: GoogleFonts.merriweather(),
