@@ -3,6 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:writing_app/providers/text_provider.dart';
 import 'package:writing_app/providers/timer_provider.dart';
+import 'package:writing_app/views/components/last_paragraph.dart';
+import 'package:writing_app/views/components/pause_button.dart';
+import 'package:writing_app/views/components/text_input.dart';
 import 'package:writing_app/views/components/turn_timer.dart';
 
 class Interface extends StatelessWidget {
@@ -32,8 +35,18 @@ class Interface extends StatelessWidget {
                 children: [
                   TurnTimer(
                     controller: timerController,
-                    height: screenHeight * 0.25,
-                    width: screenWidth * 0.25,
+                    height: screenHeight * 0.2,
+                    width: screenWidth * 0.2,
+                  ),
+                  const SizedBox(height: 40),
+                  LastParagraph(
+                    height: screenHeight * 0.2,
+                  ),
+                  const SizedBox(height: 40),
+                  PauseButton(),
+                  const SizedBox(height: 40),
+                  TextInput(
+                    timerController: timerController,
                   ),
                 ],
               ),
