@@ -20,6 +20,16 @@ class _TextInputState extends State<TextInput> {
   final focusNode = FocusNode();
   final _textController = TextEditingController();
 
+  /// Updates the display with the given text.
+  ///
+  /// This function splits the text into lines and checks if there are more than one line as a check for a paragraph break.
+  /// If there are, it updates the text in LastParagraph widget using the `TextProvider` and clears the text controller.
+  /// Finally, it calls `setState` to trigger a rebuild of the widget.
+  ///
+  /// Parameters:
+  /// - `text`: The text to be displayed.
+  ///
+  /// Returns: None.
   void _updateDisplay(text) {
     List<String> lines = _textController.text.split('\n');
 
@@ -33,6 +43,19 @@ class _TextInputState extends State<TextInput> {
     }
   }
 
+  /// Counts the number of words in a given text.
+  ///
+  /// The text parameter is expected to be a string. The function trims any leading or trailing whitespace
+  /// from the text and then splits it into individual words using a regular expression that matches
+  /// one or more whitespace characters. The number of words is then returned.
+  ///
+  /// Returns an integer representing the number of words in the text.
+  ///
+  /// Parameters:
+  ///   - text: A required string containing the text to count the number of words in.
+  ///
+  /// Returns:
+  ///   - An integer representing the number of words in the text.
   int _countWords({required String text}) {
     final trimmedText = text.trim();
     if (trimmedText.isEmpty) {
@@ -46,11 +69,11 @@ class _TextInputState extends State<TextInput> {
   Widget build(BuildContext context) {
     return Consumer2<TextProvider, TimerProvider>(
       builder: (context, textProvider, timerProvder, child) {
-        // if (timerProvider.paused) {
-        //   _textController.enabled = false;
-        // } else {
-        //   controller.resume();
-        // }
+        if (!timerProvder.paused) {
+          focusNode.requestFocus();
+        } else {
+          focusNode.unfocus();
+        }
         return TextField(
           focusNode: focusNode,
           canRequestFocus: true,
@@ -58,7 +81,7 @@ class _TextInputState extends State<TextInput> {
           minLines: 5,
           onTap: () => focusNode.requestFocus(),
           controller: _textController,
-          enabled: true,
+          enabled: !timerProvder.paused,
           onChanged: (text) => _updateDisplay(text),
           // onSubmitted: (text) => _updateDisplay(text),
           style: GoogleFonts.merriweather(),
