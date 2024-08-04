@@ -76,7 +76,8 @@ class _TextInputState extends State<TextInput> {
         }
         return TextField(
           focusNode: myFocusNode,
-          // canRequestFocus: true,
+          canRequestFocus: true,
+          autofocus: true,
           maxLines: 5,
           minLines: 5,
           controller: _textController,
@@ -85,6 +86,8 @@ class _TextInputState extends State<TextInput> {
           // onSubmitted: (text) => _updateDisplay(text),
           style: GoogleFonts.merriweather(),
           decoration: InputDecoration(
+            fillColor: Colors.white,
+            filled: true,
             counterText: '${_countWords(text: _textController.text)} words',
             labelText: 'Write Here',
             alignLabelWithHint: true,

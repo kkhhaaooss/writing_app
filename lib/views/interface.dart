@@ -25,6 +25,14 @@ class Interface extends StatelessWidget {
       ],
       child: MaterialApp(
         home: Scaffold(
+          appBar: AppBar(
+            title: const Text('Writing App'),
+            centerTitle: true,
+            actions: [],
+          ),
+          // Drawer for file selection
+          drawer: const Drawer(),
+          backgroundColor: Colors.grey,
           body: Center(
             child: Padding(
               padding: EdgeInsets.symmetric(
