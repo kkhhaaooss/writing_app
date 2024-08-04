@@ -17,7 +17,7 @@ class TextInput extends StatefulWidget {
 }
 
 class _TextInputState extends State<TextInput> {
-  final focusNode = FocusNode();
+  final myFocusNode = FocusNode();
   final _textController = TextEditingController();
 
   /// Updates the display with the given text.
@@ -68,20 +68,19 @@ class _TextInputState extends State<TextInput> {
   @override
   Widget build(BuildContext context) {
     return Consumer2<TextProvider, TimerProvider>(
-      builder: (context, textProvider, timerProvder, child) {
-        if (!timerProvder.paused) {
-          focusNode.requestFocus();
+      builder: (context, textProvider, timerProvider, child) {
+        if (!timerProvider.paused) {
+          myFocusNode.requestFocus();
         } else {
-          focusNode.unfocus();
+          myFocusNode.unfocus();
         }
         return TextField(
-          focusNode: focusNode,
-          canRequestFocus: true,
+          focusNode: myFocusNode,
+          // canRequestFocus: true,
           maxLines: 5,
           minLines: 5,
-          onTap: () => focusNode.requestFocus(),
           controller: _textController,
-          enabled: !timerProvder.paused,
+          enabled: !timerProvider.paused,
           onChanged: (text) => _updateDisplay(text),
           // onSubmitted: (text) => _updateDisplay(text),
           style: GoogleFonts.merriweather(),
