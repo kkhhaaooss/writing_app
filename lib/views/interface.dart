@@ -8,6 +8,7 @@ import 'package:writing_app/views/components/last_paragraph.dart';
 import 'package:writing_app/views/components/pause_button.dart';
 import 'package:writing_app/views/components/text_input.dart';
 import 'package:writing_app/views/components/turn_timer.dart';
+import 'package:writing_app/views/settings_page.dart';
 
 class Interface extends StatelessWidget {
   Interface({super.key});
@@ -15,12 +16,8 @@ class Interface extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final screenWidth = MediaQuery.sizeOf(context).width;
-    final screenHeight = MediaQuery.sizeOf(context).height;
-    final widthPadding = screenWidth * 0.05;
-    final heightPadding = screenHeight * 0.05;
-
-    SharedPrefs().screenWidth = screenWidth;
+    SharedPrefs().screenWidth = MediaQuery.sizeOf(context).width;
+    SharedPrefs().screenHeight = MediaQuery.sizeOf(context).height;
 
     // Set up providers
     return MultiProvider(
@@ -28,44 +25,50 @@ class Interface extends StatelessWidget {
         ChangeNotifierProvider(create: (context) => TextProvider()),
         ChangeNotifierProvider(create: (context) => TimerProvider()),
       ],
-      child: MaterialApp(
-        home: Scaffold(
-          appBar: AppBar(
-            title: Text('Writing App for ${SharedPrefs().userName}'),
-            centerTitle: true,
-            actions: [
-              InkWell(
-                onTap: () {},
-                child: const Icon(Icons.settings),
-              ),
-            ],
-          ),
-          // Drawer for file selection
-          drawer: const Drawer(),
-          backgroundColor: Colors.grey,
-          body: SingleChildScrollView(
-            child: SizedBox(
-              width: double.infinity,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  TurnTimer(
-                    controller: timerController,
-                    height: screenHeight * 0.2,
-                    width: screenWidth * 0.2,
+      child: Scaffold(
+        appBar: AppBar(
+          title: Text('Writing App for ${SharedPrefs().userName}'),
+          centerTitle: true,
+          actions: [
+            InkWell(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const SettingsPage(),
                   ),
-                  const SizedBox(height: 40),
-                  LastParagraph(
-                    height: screenHeight * 0.2,
-                  ),
-                  const SizedBox(height: 40),
-                  PauseButton(),
-                  const SizedBox(height: 40),
-                  TextInput(
-                    timerController: timerController,
-                  ),
-                ],
-              ),
+                );
+              },
+              child: const Icon(Icons.settings),
+            ),
+          ],
+        ),
+        // Drawer for file selection
+        drawer: const Drawer(),
+        backgroundColor: Colors.grey,
+        body: SingleChildScrollView(
+          padding: const EdgeInsets.all(10.0),
+          child: SizedBox(
+            width: double.infinity,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                TurnTimer(
+                  controller: timerController,
+                  height: SharedPrefs().screenHeight * 0.2,
+                  width: SharedPrefs().screenWidth * 0.2,
+                ),
+                const SizedBox(height: 40),
+                LastParagraph(
+                  height: SharedPrefs().screenHeight * 0.2,
+                ),
+                const SizedBox(height: 40),
+                PauseButton(),
+                const SizedBox(height: 40),
+                TextInput(
+                  timerController: timerController,
+                ),
+              ],
             ),
           ),
         ),

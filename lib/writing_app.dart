@@ -6,6 +6,6 @@ class WritingApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Interface();
+    return MaterialApp(home: Interface());
   }
 }
