@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 import 'package:writing_app/providers/text_provider.dart';
 import 'package:writing_app/providers/timer_provider.dart';
 import 'package:writing_app/utils/shared_prefs.dart';
+import 'package:writing_app/views/components/action_bubble.dart';
 import 'package:writing_app/views/components/last_paragraph.dart';
 import 'package:writing_app/views/components/pause_button.dart';
 import 'package:writing_app/views/components/text_input.dart';
@@ -43,6 +44,10 @@ class Interface extends StatelessWidget {
             ),
           ],
         ),
+        floatingActionButtonLocation: FloatingActionButtonLocation.endDocked,
+
+        //Init Floating Action Bubble
+        floatingActionButton: const ActionBubble(),
         // Drawer for file selection
         drawer: const Drawer(),
         backgroundColor: Colors.grey,
