@@ -19,6 +19,10 @@ class Interface extends StatelessWidget {
     final screenHeight = MediaQuery.sizeOf(context).height;
     final widthPadding = screenWidth * 0.05;
     final heightPadding = screenHeight * 0.05;
+
+    SharedPrefs().screenWidth = screenWidth;
+
+    // Set up providers
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (context) => TextProvider()),
@@ -29,18 +33,21 @@ class Interface extends StatelessWidget {
           appBar: AppBar(
             title: Text('Writing App for ${SharedPrefs().userName}'),
             centerTitle: true,
-            actions: [],
+            actions: [
+              InkWell(
+                onTap: () {},
+                child: const Icon(Icons.settings),
+              ),
+            ],
           ),
           // Drawer for file selection
           drawer: const Drawer(),
           backgroundColor: Colors.grey,
-          body: Center(
-            child: Padding(
-              padding: EdgeInsets.symmetric(
-                horizontal: widthPadding,
-                vertical: heightPadding,
-              ),
-              child: ListView(
+          body: SingleChildScrollView(
+            child: SizedBox(
+              width: double.infinity,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
                   TurnTimer(
                     controller: timerController,

@@ -16,6 +16,7 @@ class LastParagraph extends StatelessWidget {
       builder: (context, textProvider, child) {
         return Container(
           height: height,
+          width: double.infinity,
           padding: const EdgeInsets.all(8.0),
           decoration: BoxDecoration(
               color: const Color.fromARGB(255, 146, 190, 212),

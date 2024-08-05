@@ -17,6 +17,8 @@ class SharedPrefs {
 
   int get turnLength => _sharedPrefs.getInt(keyTurnLength) ?? 10;
 
+  double get screenWidth => _sharedPrefs.getDouble(keyScreenWidth) ?? 0.0;
+
   // setters for shared prefs
   set userName(String value) {
     _sharedPrefs.setString(keyUsername, value);
@@ -25,8 +27,13 @@ class SharedPrefs {
   set turnLength(int value) {
     _sharedPrefs.setInt(keyTurnLength, value);
   }
+
+  set screenWidth(double value) {
+    _sharedPrefs.setDouble(keyScreenWidth, value);
+  }
 }
 
 // keys for shared prefs
 const String keyUsername = 'key_username';
 const String keyTurnLength = 'key_turn_length';
+const String keyScreenWidth = 'key_screen_width';
