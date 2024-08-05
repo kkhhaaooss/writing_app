@@ -22,14 +22,28 @@ class LastParagraph extends StatelessWidget {
               color: const Color.fromARGB(255, 146, 190, 212),
               border: Border.all(
                   width: 3, color: Colors.black, style: BorderStyle.solid)),
-          child: Text(
-            textProvider.text,
-            style: TextStyle(
-              fontFamily: GoogleFonts.merriweather().fontFamily,
-              color: const Color.fromARGB(255, 58, 27, 27),
-            ),
-            maxLines: 5,
-            overflow: TextOverflow.ellipsis,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                'Last Paragraph:',
+                style: GoogleFonts.merriweather(
+                  fontSize: 12,
+                  fontWeight: FontWeight.normal,
+                  color: const Color.fromARGB(255, 22, 48, 113),
+                  decoration: TextDecoration.underline,
+                  fontStyle: FontStyle.italic,
+                ),
+              ),
+              Text(
+                textProvider.text,
+                style: GoogleFonts.merriweather(
+                  fontSize: 16,
+                ),
+                maxLines: 5,
+              ),
+            ],
           ),
         );
       },
