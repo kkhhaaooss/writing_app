@@ -1,6 +1,5 @@
 import 'package:circular_countdown_timer/circular_countdown_timer.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:writing_app/providers/timer_provider.dart';
 import 'package:writing_app/utils/shared_prefs.dart';
@@ -67,7 +66,7 @@ class TurnTimer extends StatelessWidget {
                           fontSize: 23.0,
                           color: Colors.white,
                           fontWeight: FontWeight.normal,
-                          backgroundColor: const Color.fromARGB(0, 0, 0, 0),
+                          backgroundColor: Color.fromARGB(0, 0, 0, 0),
                           shadows: [
                             Shadow(
                               color: Color.fromARGB(128, 0, 0, 0),
