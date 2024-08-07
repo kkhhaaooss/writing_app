@@ -1,5 +1,6 @@
 import 'package:circular_countdown_timer/circular_countdown_timer.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:writing_app/providers/timer_provider.dart';
 import 'package:writing_app/utils/shared_prefs.dart';
@@ -16,6 +17,16 @@ class TurnTimer extends StatelessWidget {
     required this.height,
   });
 
+  void addTurn() {
+    SharedPrefs().currentDocumentTurns += 1;
+  }
+
+  void resetTimer() {
+    controller.pause();
+    addTurn();
+    controller.reset();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Consumer<TimerProvider>(
@@ -29,27 +40,65 @@ class TurnTimer extends StatelessWidget {
         } else {
           controller.resume();
         }
-        return CircularCountDownTimer(
-          duration: SharedPrefs().turnLength * 60,
-          initialDuration: 0,
-          controller: controller,
-          width: timerProvider.paused ? width : width / 2,
-          height: timerProvider.paused ? height : height / 2,
-          fillColor: Colors.grey,
-          strokeWidth: width * .75,
-          ringColor: Colors.black,
-          autoStart: false,
-          isReverse: true,
-          strokeCap: StrokeCap.butt,
-          textStyle: TextStyle(
-            fontSize: timerProvider.paused ? 23.0 : 15.0,
-            color: Colors.blue,
-            fontWeight:
-                timerProvider.paused ? FontWeight.bold : FontWeight.normal,
-            backgroundColor: Colors.black,
-          ),
-          textAlign: TextAlign.center,
-          textFormat: CountdownTextFormat.MM_SS,
+        return Column(
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(!timerProvider.paused ? '' : 'Time Left: '),
+                CircularCountDownTimer(
+                  duration: SharedPrefs().turnLength * 60,
+                  initialDuration: 0,
+                  controller: controller,
+                  width: !timerProvider.paused ? width : width / 1.8,
+                  height: !timerProvider.paused ? height : height / 1.8,
+                  fillColor: !timerProvider.paused
+                      ? Colors.grey
+                      : const Color.fromARGB(0, 0, 0, 0),
+                  strokeWidth: width * .75,
+                  ringColor: !timerProvider.paused
+                      ? Colors.black
+                      : const Color.fromARGB(0, 0, 0, 0),
+                  autoStart: !timerProvider.paused ? true : false,
+                  isReverse: true,
+                  strokeCap: StrokeCap.butt,
+                  textStyle: !timerProvider.paused
+                      ? const TextStyle(
+                          fontSize: 23.0,
+                          color: Colors.white,
+                          fontWeight: FontWeight.normal,
+                          backgroundColor: const Color.fromARGB(0, 0, 0, 0),
+                          shadows: [
+                            Shadow(
+                              color: Color.fromARGB(128, 0, 0, 0),
+                              blurRadius: 9.0,
+                              offset: Offset(1.0, 1.0),
+                            ),
+                          ],
+                        )
+                      : const TextStyle(
+                          fontSize: 16.0,
+                          color: Colors.black,
+                          fontWeight: FontWeight.normal,
+                          backgroundColor: Color.fromARGB(0, 0, 0, 0),
+                          shadows: [
+                            Shadow(
+                              color: Color.fromARGB(128, 0, 0, 0),
+                              blurRadius: 9.0,
+                              offset: Offset(1.0, 1.0),
+                            ),
+                          ],
+                        ),
+                  textAlign: TextAlign.center,
+                  textFormat: CountdownTextFormat.MM_SS,
+                  onComplete: resetTimer,
+                ),
+              ],
+            ),
+            Text(!timerProvider.paused
+                ? ''
+                : '${SharedPrefs().currentDocumentTurns} turns on this document.')
+          ],
         );
       },
     );

@@ -6,6 +6,13 @@ class WritingApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(home: Interface());
+    return MaterialApp(
+      title: 'Writing App',
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(brightness: Brightness.light),
+      darkTheme: ThemeData(brightness: Brightness.dark),
+      themeMode: ThemeMode.system,
+      home: Interface(),
+    );
   }
 }

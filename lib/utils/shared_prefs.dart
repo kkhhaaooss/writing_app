@@ -23,6 +23,14 @@ class SharedPrefs {
   double get screenHeight =>
       _sharedPrefs.getDouble(keyScreenHeight) ?? double.infinity;
 
+  // getters for currentDocument shared prefs
+
+  int get currentDocumentTurns =>
+      _sharedPrefs.getInt(keyCurrentDocumentTurns) ?? 0;
+
+  int get currentDocumentParagraphs =>
+      _sharedPrefs.getInt(keyCurrentDocumentParagraphs) ?? 0;
+
   // setters for shared prefs
   set userName(String value) {
     _sharedPrefs.setString(keyUsername, value);
@@ -39,6 +47,16 @@ class SharedPrefs {
   set screenHeight(double value) {
     _sharedPrefs.setDouble(keyScreenHeight, value);
   }
+
+  // setters for currentDocument shared prefs
+
+  set currentDocumentTurns(int value) {
+    _sharedPrefs.setInt(keyCurrentDocumentTurns, value);
+  }
+
+  set currentDocumentParagraphs(int value) {
+    _sharedPrefs.setInt(keyCurrentDocumentParagraphs, value);
+  }
 }
 
 // keys for shared prefs
@@ -46,3 +64,7 @@ const String keyUsername = 'key_username';
 const String keyTurnLength = 'key_turn_length';
 const String keyScreenWidth = 'key_screen_width';
 const String keyScreenHeight = 'key_screen_height';
+
+// keys for currentDocument shared prefs
+const String keyCurrentDocumentTurns = 'key_document_turns';
+const String keyCurrentDocumentParagraphs = 'key_document_paragraphs';
