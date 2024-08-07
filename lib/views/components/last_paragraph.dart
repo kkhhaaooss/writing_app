@@ -21,7 +21,10 @@ class LastParagraph extends StatelessWidget {
           decoration: BoxDecoration(
               color: const Color.fromARGB(255, 146, 190, 212),
               border: Border.all(
-                  width: 3, color: Colors.black, style: BorderStyle.solid)),
+                width: 3,
+                // color: Colors.black,
+                style: BorderStyle.solid,
+              )),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -40,6 +43,7 @@ class LastParagraph extends StatelessWidget {
                 textProvider.text,
                 style: GoogleFonts.merriweather(
                   fontSize: 16,
+                  color: const Color.fromARGB(255, 22, 48, 113),
                 ),
                 maxLines: 5,
               ),

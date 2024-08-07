@@ -27,7 +27,12 @@ class PauseButton extends StatelessWidget {
               btnFocusNode.unfocus();
               timerProvider.togglePause();
             },
-            child: Text(timerProvider.paused ? 'Write!' : 'Pause Writing'),
+            child: Text(
+              timerProvider.paused ? 'Write!' : 'Pause Writing',
+              style: const TextStyle(
+                color: Colors.black,
+              ),
+            ),
           ),
         );
       },

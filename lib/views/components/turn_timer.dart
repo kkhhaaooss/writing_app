@@ -49,14 +49,14 @@ class TurnTimer extends StatelessWidget {
                   duration: SharedPrefs().turnLength * 60,
                   initialDuration: 0,
                   controller: controller,
-                  width: !timerProvider.paused ? width : width / 1.8,
-                  height: !timerProvider.paused ? height : height / 1.8,
+                  width: !timerProvider.paused ? width : width / 1.25,
+                  height: !timerProvider.paused ? height : height / 1.25,
                   fillColor: !timerProvider.paused
-                      ? Colors.grey
+                      ? Colors.black
                       : const Color.fromARGB(0, 0, 0, 0),
                   strokeWidth: width * .75,
                   ringColor: !timerProvider.paused
-                      ? Colors.black
+                      ? const Color.fromARGB(255, 146, 190, 212)
                       : const Color.fromARGB(0, 0, 0, 0),
                   autoStart: !timerProvider.paused ? true : false,
                   isReverse: true,
@@ -64,12 +64,12 @@ class TurnTimer extends StatelessWidget {
                   textStyle: !timerProvider.paused
                       ? const TextStyle(
                           fontSize: 23.0,
-                          color: Colors.white,
+                          // color: Colors.white,
                           fontWeight: FontWeight.normal,
                           backgroundColor: Color.fromARGB(0, 0, 0, 0),
                           shadows: [
                             Shadow(
-                              color: Color.fromARGB(128, 0, 0, 0),
+                              // color: Color.fromARGB(128, 0, 0, 0),
                               blurRadius: 9.0,
                               offset: Offset(1.0, 1.0),
                             ),
@@ -77,12 +77,12 @@ class TurnTimer extends StatelessWidget {
                         )
                       : const TextStyle(
                           fontSize: 16.0,
-                          color: Colors.black,
+                          // color: Colors.black,
                           fontWeight: FontWeight.normal,
                           backgroundColor: Color.fromARGB(0, 0, 0, 0),
                           shadows: [
                             Shadow(
-                              color: Color.fromARGB(128, 0, 0, 0),
+                              // color: Color.fromARGB(128, 0, 0, 0),
                               blurRadius: 9.0,
                               offset: Offset(1.0, 1.0),
                             ),

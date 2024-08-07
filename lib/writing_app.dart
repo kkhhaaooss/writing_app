@@ -11,7 +11,7 @@ class WritingApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(brightness: Brightness.light),
       darkTheme: ThemeData(brightness: Brightness.dark),
-      themeMode: ThemeMode.system,
+      themeMode: ThemeMode.dark,
       home: Interface(),
     );
   }

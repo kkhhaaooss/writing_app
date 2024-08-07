@@ -48,7 +48,7 @@ class Interface extends StatelessWidget {
 
         // Drawer for file selection
         drawer: const Drawer(),
-        backgroundColor: Colors.grey,
+        // backgroundColor: Colors.grey,
         body: SingleChildScrollView(
           padding: const EdgeInsets.all(10.0),
           child: SizedBox(
@@ -59,19 +59,19 @@ class Interface extends StatelessWidget {
                 LastParagraph(
                   height: SharedPrefs().screenHeight * 0.2,
                 ),
-                const SizedBox(height: 40),
+                const SizedBox(height: 20),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     TurnTimer(
                       controller: timerController,
-                      height: SharedPrefs().screenHeight * 0.2,
-                      width: SharedPrefs().screenWidth * 0.2,
+                      height: SharedPrefs().screenHeight * 0.15,
+                      width: SharedPrefs().screenWidth * 0.15,
                     ),
                     PauseButton(),
                   ],
                 ),
-                const SizedBox(height: 40),
+                const SizedBox(height: 20),
                 TextInput(
                   timerController: timerController,
                 ),
