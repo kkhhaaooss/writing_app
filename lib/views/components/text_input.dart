@@ -5,6 +5,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:writing_app/providers/text_provider.dart';
 import 'package:writing_app/providers/timer_provider.dart';
+import 'package:writing_app/utils/shared_prefs.dart';
 
 class TextInput extends StatefulWidget {
   const TextInput({
@@ -36,6 +37,7 @@ class _TextInputState extends State<TextInput> {
     // Update only after a return
     if (lines.length > 1) {
       context.read<TextProvider>().updateText(_textController.text);
+      SharedPrefs().currentDocumentParagraphs += 1;
 
       _textController.clear();
 

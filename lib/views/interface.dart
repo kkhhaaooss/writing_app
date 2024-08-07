@@ -56,17 +56,21 @@ class Interface extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                TurnTimer(
-                  controller: timerController,
-                  height: SharedPrefs().screenHeight * 0.2,
-                  width: SharedPrefs().screenWidth * 0.2,
-                ),
-                const SizedBox(height: 40),
                 LastParagraph(
                   height: SharedPrefs().screenHeight * 0.2,
                 ),
                 const SizedBox(height: 40),
-                PauseButton(),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    TurnTimer(
+                      controller: timerController,
+                      height: SharedPrefs().screenHeight * 0.2,
+                      width: SharedPrefs().screenWidth * 0.2,
+                    ),
+                    PauseButton(),
+                  ],
+                ),
                 const SizedBox(height: 40),
                 TextInput(
                   timerController: timerController,

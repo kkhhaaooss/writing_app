@@ -96,7 +96,7 @@ class TurnTimer extends StatelessWidget {
             ),
             Text(!timerProvider.paused
                 ? ''
-                : '${SharedPrefs().currentDocumentTurns} turns on this document.')
+                : '${SharedPrefs().currentDocumentTurns} turns,\n${SharedPrefs().currentDocumentParagraphs} paragraphs on this document.')
           ],
         );
       },
