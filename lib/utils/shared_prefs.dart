@@ -13,6 +13,9 @@ class SharedPrefs {
   }
 
   // getters for shared prefs
+
+  String get appTheme => _sharedPrefs.getString(keyAppTheme) ?? 'dark';
+
   String get userName => _sharedPrefs.getString(keyUsername) ?? 'User';
 
   int get turnLength => _sharedPrefs.getInt(keyTurnLength) ?? 10;
@@ -32,6 +35,11 @@ class SharedPrefs {
       _sharedPrefs.getInt(keyCurrentDocumentParagraphs) ?? 0;
 
   // setters for shared prefs
+
+  set appTheme(String value) {
+    _sharedPrefs.setString(keyAppTheme, value);
+  }
+
   set userName(String value) {
     _sharedPrefs.setString(keyUsername, value);
   }
@@ -60,6 +68,7 @@ class SharedPrefs {
 }
 
 // keys for shared prefs
+const String keyAppTheme = 'key_app_theme';
 const String keyUsername = 'key_username';
 const String keyTurnLength = 'key_turn_length';
 const String keyScreenWidth = 'key_screen_width';

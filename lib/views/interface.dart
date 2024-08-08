@@ -1,6 +1,7 @@
 import 'package:circular_countdown_timer/circular_countdown_timer.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:writing_app/providers/settings_provider.dart';
 import 'package:writing_app/providers/text_provider.dart';
 import 'package:writing_app/providers/timer_provider.dart';
 import 'package:writing_app/utils/shared_prefs.dart';
@@ -26,6 +27,7 @@ class Interface extends StatelessWidget {
       providers: [
         ChangeNotifierProvider(create: (context) => TextProvider()),
         ChangeNotifierProvider(create: (context) => TimerProvider()),
+        ChangeNotifierProvider(create: (context) => SettingsProvider()),
       ],
       child: Scaffold(
         appBar: AppBar(
@@ -37,7 +39,7 @@ class Interface extends StatelessWidget {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => const SettingsPage(),
+                    builder: (context) => SettingsPage(),
                   ),
                 );
               },
